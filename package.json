@@ -1,0 +1,13 @@
+{
+  "name": "godox-shop-fullstack",
+  "version": "2.0.0",
+  "private": true,
+  "description": "GODOX-SHOP frontend + hardened Node.js backend + MarzPay integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build": "node scripts/build-netlify-config.js"
+  },
+  "engines": {"node": ">=22"}
+}

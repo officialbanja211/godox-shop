@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: godox-shop-api
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_FILE
+        value: /opt/render/project/src/data/godox.sqlite
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAMESITE
+        value: none
+      - key: MARZPAY_ENABLED
+        value: "true"
+      - key: MARZPAY_PAYOUTS_ENABLED
+        value: "false"
+      - key: MARZPAY_BASE_URL
+        value: https://wallet.wearemarz.com/api/v1
+      - key: MARZPAY_REQUIRE_WEBHOOK_SIGNATURE
+        value: "true"
+      - key: MARZPAY_TIMEOUT_MS
+        value: "30000"
+      - key: DEV_AUTO_CONFIRM_PAYMENTS
+        value: "false"
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: MARZPAY_API_KEY
+        sync: false
+      - key: MARZPAY_API_SECRET
+        sync: false
+      - key: MARZPAY_CALLBACK_URL
+        sync: false
+      - key: MARZPAY_WEBHOOK_SECRET
+        sync: false
+    disk:
+      name: godox-sqlite-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
